@@ -1,12 +1,14 @@
 addEventListener("load", async () => {
     let time = document.getElementById("time")
-    setData()
+    setData(time)
     let main = setInterval(async () => {
-        setData()
+        if (setData(time) == -1) {
+            clearInterval(main)
+        }
     }, 1800 * 1000);
 })
 
-let setData = async () => {
+let setData = async (time) => {
     console.log("Updating data...")
     let ctime = new Date()
     console.log(ctime)
@@ -14,6 +16,7 @@ let setData = async () => {
     if (data == NaN) {
         console.error("Data fetch failed?!")
         time.innerHTML = "An error has occured. Github might be down?"
+        return -1
     } else {
         console.log("Data fetched!")
         console.log(data)
