@@ -12,7 +12,7 @@ let setData = async (time) => {
     console.log("Updating data...");
     let ctime = new Date();
     console.log(ctime);
-    let data = await (await fetch("https://raw.githubusercontent.com/Kanzaji/MMC-Last-Drama/master/data.json")).json();
+    let data = await (await fetch("https://raw.githubusercontent.com/Kanzaji/MMC-Last-Drama/data/data.json")).json();
     if (data == NaN) {
         console.error("Data fetch failed?!");
         time.innerHTML = "An error has occured. Github might be down?";
